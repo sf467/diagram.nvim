@@ -25,8 +25,8 @@ M.render = function(source, options)
   local path = vim.fn.resolve(cache_dir .. "/" .. hash .. ".png")
   if vim.fn.filereadable(path) == 1 then return { file_path = path } end
 
-  if not vim.fn.executable("mmdc") then 
-    vim.notify("mmdc not found in PATH. Please install mermaid-cli to use mermaid diagrams.", vim.log.levels.ERROR, { title = "Diagram.nvim" })
+  if not vim.fn.executable("mmdr") then 
+    vim.notify("mmdc not found in PATH. Please install mmdr to use mermaid diagrams.", vim.log.levels.ERROR, { title = "Diagram.nvim" })
     return nil
   end
 
@@ -34,7 +34,7 @@ M.render = function(source, options)
   vim.fn.writefile(vim.split(source, "\n"), tmpsource)
 
   local command_parts = {
-    "mmdc",
+    "mmdr",
   }
 
   -- Add custom CLI arguments if provided
